@@ -21,7 +21,7 @@
     </div>
     {{- end }}
   </header>
-  {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- $isHidden := .Params.cover.hidden | default site.Params.cover.hiddenInSingle | default site.Params.cover.hidden }}
   {{- partial "cover.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
   {{- if (.Param "ShowToc") }}
   {{- partial "toc.html" . }}
@@ -37,11 +37,32 @@
 
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    {{- $categories := .Language.Params.Taxonomies.category | default "categories" }}
+    <!-- (re)set the counter to 0 -->
+		{{- $.Scratch.Set "tagCounter" 0 }}
+		<!-- increment counter if post contains the current tag-->
+		{{- range ($.GetTerms $tags) }}
+      {{- $.Scratch.Add "tagCounter" 1 }}
+		{{- end }}
+    {{- range ($.GetTerms $categories) }}
+      {{- $.Scratch.Add "tagCounter" 1 }}
+		{{- end }}
+    {{- if gt ($.Scratch.Get "tagCounter") 0}}
+    <div class="tags-categories">
     <ul class="post-tags">
+      <li>Tagged</li>
       {{- range ($.GetTerms $tags) }}
       <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
     </ul>
+    <ul class="post-tags">
+      <li>Categorized</li>
+      {{- range ($.GetTerms $categories) }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    </div>
+    {{- end}} <!-- tagcounter -->
     {{- if (.Param "ShowPostNavLinks") }}
     {{- partial "post_nav_links.html" . }}
     {{- end }}

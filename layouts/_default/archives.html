@@ -46,14 +46,35 @@
       {{- range .Pages }}
       {{- if eq .Kind "page" }}
       <div class="archive-entry">
-        <h3 class="archive-entry-title">
+        <!-- <h3 class="archive-entry-title">
           {{- .Title | markdownify }}
           {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
         </h3>
         <div class="archive-meta">
           {{- partial "post_meta.html" . -}}
         </div>
-        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a> -->
+        <article class="post-entry">
+          {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
+          {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+          <header class="entry-header">
+            <h2>
+              {{- .Title }}
+              {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+            </h2>
+          </header>
+          {{- if (ne (.Param "hideSummary") true) }}
+          <div class="entry-content">
+            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+          </div>
+          {{- end }}
+          {{- if not (.Param "hideMeta") }}
+          <footer class="entry-footer">
+            {{- partial "post_meta.html" . -}}
+          </footer>
+          {{- end }}
+          <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+        </article>
       </div>
       {{- end }}
       {{- end }}

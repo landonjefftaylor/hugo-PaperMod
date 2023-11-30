@@ -38,7 +38,8 @@
 
 button#theme-toggle {
     font-size: 26px;
-    margin: auto 4px;
+    width: 100%;
+    margin: auto 1rem;
 }
 
 body.dark #moon {
@@ -48,6 +49,11 @@ body.dark #moon {
 
 body:not(.dark) #sun {
     display: none;
+}
+
+#sun:hover,
+#moon:hover {
+    color: var(--secondary);
 }
 
 #menu {
@@ -68,6 +74,10 @@ body:not(.dark) #sun {
 #menu .active {
     font-weight: 500;
     border-bottom: 2px solid currentColor;
+}
+
+a:not(.logo a):hover {
+    color: var(--secondary) !important;
 }
 
 .lang-switch li,

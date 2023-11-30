@@ -6,8 +6,13 @@
 
 - id: read_time
   translation:
-    one : "1 min"
-    other: "{{ .Count }} min"
+    one : "1-minute read"
+    other: "{{ .Count }}-minute read"
+
+- id: listen_time
+  translation:
+    one : "1-minute listen"
+    other: "{{ .Count }}-minute listen"
 
 - id: words
   translation:

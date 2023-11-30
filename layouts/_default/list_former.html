@@ -30,34 +30,6 @@
     {{ .Description }}
   </div>
   {{- end }}
-  <!-- {{- if .Param "taxButtons" }}
-    <div class="buttons" style="margin:1rem 0;justify-content:left;">
-      <a class="button" href="/categories/" rel="noopener" title="categories" style="margin: .5rem 1rem .5rem 0;">
-        <span class="button-inner">
-            Categories
-        </span>
-      </a>
-      <a class="button" href="/tags/" rel="noopener" title="tags" style="margin: .5rem 1rem .5rem 0;">
-        <span class="button-inner">
-            Tags
-        </span>
-      </a>
-    </div>
-    {{- end }}
-    {{- if .Param "recipeButtons" }}
-    <div class="buttons" style="margin:1rem 0;justify-content:left;">
-      <a class="button" href="/meals/" rel="noopener" title="meals" style="margin: .5rem 1rem .5rem 0;">
-        <span class="button-inner">
-            Find by Meal Type
-        </span>
-      </a>
-      <a class="button" href="/diets/" rel="noopener" title="diets" style="margin: .5rem 1rem .5rem 0;">
-        <span class="button-inner">
-            Find by Diet
-        </span>
-      </a>
-    </div>
-    {{- end }} -->
 </header>
 {{- end }}
 
@@ -82,62 +54,8 @@
 {{- partial "home_info.html" . }}
 {{- end }}
 
-{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 
-{{- $term := .Data.Term }}
-<h1 style="margin: 2rem 0">some things i did 
-{{- $rss := (.OutputFormats.Get "rss") }}
-{{- if (eq .Kind `page`) }}
-    {{- $rss = (.Parent.OutputFormats.Get "rss") }}
-{{- end }}
-{{- with $rss }}
-<a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round" height="23">
-    <path d="M4 11a9 9 0 0 1 9 9" />
-    <path d="M4 4a16 16 0 0 1 16 16" />
-    <circle cx="5" cy="19" r="1" />
-  </svg>
-</a>
-{{- end }}
-</h1>
 
-{{- range $index , $page := $paginator.Pages.ByDate.Reverse }}
-
-{{- $class := "post-entry" }}
-
-{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
-{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
-{{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
-{{- end }}
-
-<article class="{{ $class }}">
-  {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
-  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
-  <header class="entry-header">
-    <h2>
-      {{- .Title }}
-      {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
-    </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-  </div>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
-  {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
-
-{{- else }}
-<!-- i.e. if not ishome -->
 {{- range $pages.GroupByPublishDate "2006" }}
 {{- if ne .Key "0001" }}
 <div class="archive-year">
@@ -187,7 +105,6 @@
   </div>
   {{- end }}
 </div>
-{{- end }}
 {{- end }}
 {{- end }}
 

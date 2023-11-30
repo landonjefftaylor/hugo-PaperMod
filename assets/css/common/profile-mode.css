@@ -16,12 +16,12 @@
 
 .profile img {
     display: inline-table;
-    border-radius: 50%;
+    border-radius: 8%;
 }
 
 .buttons {
     flex-wrap: wrap;
-    max-width: 400px;
+    /* max-width: 400px; */
     margin: 0 auto;
 }
 
@@ -39,4 +39,11 @@
 
 .button:active {
     transform: scale(0.96);
+}
+
+.button:hover {
+    background: var(--border);
+    text-decoration: underline;
+    border: 0px;
+    /* color: var(--primary); */
 }

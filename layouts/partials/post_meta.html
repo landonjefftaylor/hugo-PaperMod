@@ -5,19 +5,21 @@
 {{- end }}
 
 {{- if (.Param "ShowReadingTime") -}}
-{{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
+{{- if (.Param "PodcastEpisode") -}}
+{{- $scratch.Add "meta" (slice (i18n "listen_time" .Params.ListenTime | default (printf "%d-minute episode" .Params.ListenTime))) }}
+{{- else }}
+{{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d-minute read" .ReadingTime))) }}
+{{- end }}
 {{- end }}
 
 {{- if (.Param "ShowWordCount") -}}
 {{- $scratch.Add "meta" (slice (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
 {{- end }}
 
-{{- if not (.Param "hideAuthor") -}}
 {{- with (partial "author.html" .) }}
 {{- $scratch.Add "meta" (slice .) }}
 {{- end }}
-{{- end }}
 
 {{- with ($scratch.Get "meta") }}
-{{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- delimit . "&nbsp;·&nbsp;" -}}
 {{- end -}}
