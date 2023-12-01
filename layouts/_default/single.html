@@ -26,7 +26,7 @@
   {{- if (.Param "ShowToc") }}
   {{- partial "toc.html" . }}
   {{- end }}
-
+  
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
@@ -34,6 +34,36 @@
     {{- else }}{{ .Content }}{{ end }}
   </div>
   {{- end }}
+  
+  {{- if (.Param "authorPage")}}
+  <h2 style="margin: 4rem 0 2rem 0">My Recent Posts</h2>
+  {{- $author := (.Params.author | default site.Params.author) }}
+  {{- $authorPage := site.GetPage (printf "%s%s" "/authors/" $author) }}
+  {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+  {{- range first 4 (where $pages "Params.author" $author ) }}
+  <article class="author-post-entry">
+    {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
+    {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+    <header class="entry-header">
+      <h2>
+        {{- .Title }}
+        {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
+      </h2>
+    </header>
+    {{- if (ne (.Param "hideSummary") true) }}
+    <div class="entry-content">
+      <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <footer class="entry-footer">
+      {{- partial "post_meta.html" . -}}
+    </footer>
+    {{- end }}
+    <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+  </article>
+  {{- end }} 
+  {{- end }} 
 
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
@@ -74,6 +104,7 @@
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
   {{- end }}
+
 </article>
 
 {{- end }}{{/* end main */}}

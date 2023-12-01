@@ -50,6 +50,24 @@
     transform: scale(0.96);
 }
 
+.author-post-entry {
+    position: relative;
+    margin-bottom: var(--gap);
+    padding: var(--gap);
+    background: var(--entry);
+    border-radius: var(--radius);
+    transition: transform 0.1s;
+    border: 1px solid var(--border);
+    max-width: calc(var(--main-width) + var(--gap) * 2) !important;
+}
+.author-post-entry:hover {
+    background: var(--tertiary);
+}
+
+.author-post-entry:active {
+    transform: scale(0.96);
+}
+
 .tag-entry .entry-cover {
     display: none;
 }
@@ -70,7 +88,7 @@
     -webkit-line-clamp: 2;
 }
 
-.entry-footer {
+.entry-footer, .entry-footer a {
     color: var(--secondary);
     font-size: 13px;
 }
