@@ -1,4 +1,25 @@
 {{- define "main" }}
-<div class="not-found">&#128546;</div>
-<div class="not-found" style="font-size:1.3em; line-height:1em; top:7em;">error 404: i can't find this page.<br />this is a little embarassing...</div>
+<div class="not-found"> 
+
+    <p class="p404-emoji">&#128551;</p>
+
+    <p class="p404-head">shucks</p>
+    <p class="p404-sub">that's an error 404, friend</p>
+
+    <p style="height:3rem">&nbsp;</p>
+
+    <a class="button" href="/search/" rel="noopener" title="search">
+        <span class="button-inner">
+            search instead
+        </span>
+    </a>
+    
+    <p style="height:3rem">&nbsp;</p>
+    
+    <p class="p404-text">i can't find any page here</p>
+    <p class="p404-sub">this is embarassing, but what do you do?</p>
+
+
+</div>
 {{- end }}{{/* end main */ -}}
+
