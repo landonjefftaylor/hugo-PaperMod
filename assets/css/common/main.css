@@ -148,4 +148,11 @@ pre:hover .copy-code {
     .toc {
         display:none !important;
     }
+
+    .collapse {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 0.5rem 5px;
+        margin: 1rem 0;
+    }
 }

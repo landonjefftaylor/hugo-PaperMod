@@ -493,3 +493,35 @@ img.in-text {
     display: inline;
     margin: auto;
 }
+
+.collapse {
+    /* border: 1px solid var(--border); */
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    padding: 0.5rem 5px;
+}
+
+.dark .collapse {
+    background: var(--entry);
+}
+
+.collapse details summary {
+    cursor: zoom-in;
+    margin-inline-start: 20px;
+}
+
+.collapse details[open] summary {
+    cursor: zoom-out;
+}
+
+.collapse details {
+    display: block;
+    font-weight: 500;
+}
+
+.collapse .inner {
+    display: block;
+    margin: 0 10px;
+    padding: 10px;
+    font-weight: 400;
+}
