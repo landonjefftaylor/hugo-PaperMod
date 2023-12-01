@@ -4,6 +4,12 @@
 {{- if (or (eq $author_type "[]string") (eq $author_type "[]interface {}")) }}
 {{- (delimit $author ", " ) }}
 {{- else }}
+{{- if .GetPage ( printf "%s%s" "/authors/" $author) }}
+{{- with .GetPage ( printf "%s%s" "/authors/" $author) }}
+{{- .Title }}
+{{- end }}
+{{- else }}
 {{- $author }}
+{{- end }}
 {{- end }}
 {{- end -}}
