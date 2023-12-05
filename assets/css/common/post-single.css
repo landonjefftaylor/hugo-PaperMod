@@ -97,8 +97,10 @@
     box-shadow: 0 -1px 0 var(--primary) inset;
 }
 
-sup a, sub a {
+sup a, sub a, sup {
     box-shadow: 0 0 0 !important;
+    margin-top: -1rem;
+    display: inline-block;
 }
 
 .post-content del {
@@ -234,7 +236,6 @@ sup a, sub a {
     padding: 1rem 1.5rem;
     border-inline-start: 5px solid var(--primary);
     border-inline-end: 5px solid var(--primary);
-    font-size: 1.15em;
     background: var(--code-bg);
     border-radius: var(--radius);
 }
