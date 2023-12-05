@@ -95,7 +95,7 @@ pre:hover .copy-code {
         font-size:1.5rem !important;
     }
     h3 {
-        font-size:1.2rem !important;
+        font-size:1rem !important;
     }
     h1, h2, h3 {
         margin: 0 !important;
@@ -154,5 +154,16 @@ pre:hover .copy-code {
         border-radius: var(--radius);
         padding: 0.5rem 5px;
         margin: 1rem 0;
+    }
+
+    .footnotes hr {
+        margin: 1.5rem 0;
+        height: 0px;
+        border-top: 2px solid var(--border) !important;
+        }
+
+    .footnotes {
+        font-size: 0.75rem !important;
+        padding-top: 0 !important;
     }
 }
