@@ -72,6 +72,10 @@ pre:hover .copy-code {
     ul#menu, footer, figure.entry-cover, a#top-link {
         display: none !important;
     }
+    * {
+        background-color: rgba(255, 255, 255, 0.0) !important;
+        color: black !important;
+    }
     nav {
         margin: 0 0 -2rem 0;
         width: 100% !important;
@@ -87,18 +91,25 @@ pre:hover .copy-code {
     }
     h1, h2, h3, h4, h5, h6 {
         clear: left !important;
+        margin: 0.5rem 0 !important;
     }
     h1 {
-        font-size:1.8rem !important;
+        font-size:1.6rem !important;
     }
     h2 {
         font-size:1.5rem !important;
     }
     h3 {
-        font-size:1rem !important;
+        font-size:1.4rem !important;
     }
-    h1, h2, h3 {
-        margin: 0 !important;
+    h4 {
+        font-size:1.3rem !important;
+    }
+    h5 {
+        font-size:1.2rem !important;
+    }
+    h6 {
+        font-size:1.1rem !important;
     }
     li {
         margin: 0 !important;
@@ -107,7 +118,7 @@ pre:hover .copy-code {
     .post-content img {
         border-radius: 8px;
         margin: 1rem auto 1rem 0;
-        max-width:80% !important;
+        max-width:70% !important;
         break-inside: avoid; /* or 'auto' */
     }
     
@@ -118,30 +129,31 @@ pre:hover .copy-code {
     }
     
     .post-content img[src*="#small"] {
-        max-width:35%;
-        margin: 1rem 2rem 1rem 0;
-        float:left;
+        width: 50%;
+        max-width: 5in;
+        margin: 1rem auto;
         break-inside: avoid; /* or 'auto' */
+        display:block;
     }
     
     .post-content img[src*="#float"] {
-        display:inline;
+        /* display:inline; */
         break-inside: avoid; /* or 'auto' */
     }
 
     .post-content img[src*="#left"] {
-        display:inline;
-        width: 35%;
-        max-width: 3in;
+        /* display:inline; */
+        width: 33%;
+        max-width: 2.5in;
         float:left;
         margin: 1rem 2rem 1rem 0;
         break-inside: avoid; /* or 'auto' */
     }
     
     .post-content img[src*="#right"] {
-        display:inline;
-        width: 35%;
-        max-width: 3in;
+        /* display:inline; */
+        width: 33%;
+        max-width: 2.5in;
         float:right;
         margin: 1rem 0 1rem 2rem;
         break-inside: avoid; /* or 'auto' */
@@ -168,4 +180,14 @@ pre:hover .copy-code {
         font-size: 0.75rem !important;
         padding-top: 0 !important;
     }
+
+    .post-content blockquote {
+        margin: 2rem 0;
+        padding: 1rem 1.5rem;
+        border-inline-start: 5px solid black !important;
+        border-inline-end: 5px solid black !important;
+        background: #eeeeee !important;
+        border-radius: var(--radius);
+    }
+
 }
