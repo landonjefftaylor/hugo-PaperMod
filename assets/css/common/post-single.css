@@ -124,6 +124,10 @@ sup a, sub a, sup {
     margin-top: 5px;
 }
 
+.post-content li ul {
+    margin-bottom: 0 !important;
+}
+
 .post-content li p {
     margin-bottom: 0;
 }
