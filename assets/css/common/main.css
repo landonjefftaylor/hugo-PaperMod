@@ -111,7 +111,7 @@ pre:hover .copy-code {
     h6 {
         font-size:1.1rem !important;
     }
-    li {
+    li, li ul {
         margin: 0 !important;
     }
     
