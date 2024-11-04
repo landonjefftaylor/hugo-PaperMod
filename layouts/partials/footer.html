@@ -1,12 +1,9 @@
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
-    <!-- <span>Subscribe to my <a href="/index.xml" target="_blank">RSS Feed</a></span>
-    <br /> -->
     {{- if site.Copyright }}
     <span>{{ site.Copyright | markdownify }}</span>
     {{- else }}
-    <span>&copy; {{ now.Year }}. All Rights Reserved.</span> 
-    <span><a href="/about/">About &amp; Privacy</a></span>
+    <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span>
     {{- end }}
 </footer>
 {{- end }}
